@@ -27,7 +27,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #VOLUME "/etc/wal-e/env"
 #ADD scripts/docker-entrypoint.sh /docker-entrypoint.sh
-ADD scripts/docker-entrypoint-2.sh /docker-entrypoint.sh
+ADD scripts/docker-entrypoint.sh /docker-entrypoint.sh
 
 
 ADD scripts/fix-acl.sh /docker-entrypoint-initdb.d/
