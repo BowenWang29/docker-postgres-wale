@@ -1,12 +1,15 @@
-# Postgres docker container with wale for backup
+# Postgres docker container with postgis plugin and wale for backup
 
-Based on https://github.com/docker-library/postgres with [WAL-E](https://github.com/wal-e/wal-e) installed.
+
+Based on a [docker-postgis](https://github.com/appropriate/docker-postgis) with [WAL-E](https://github.com/wal-e/wal-e) installed.
+
+This image serves to store the data from FROST-Server.
 
 Environment variables to pass to the container for WAL-E, all of these must be present or WAL-E is not configured.
 
-Create an IAM user in a group with GetObject, ListBucket and PutObject on the bucket you want to use (and that it's not public).
+This image backups at 9 am UTC and cleanups backups at 9:30 am UTC and retains up to 10 backups. These settings is found in __/scripts/setup-wale.sh__.
 
-This image backups at 9 am UTC and cleanups backups at 9:30 am UTC.
-This image retains up to 10 backups.
-
-This image has a Volume at /etc/wal-e/env
+This image has three volumes:
+- postgis_data_volume:/var/lib/postgresql/data
+- postgis_backup_volume:/lib/postgresql/backup
+- postgis_env_volume:/etc/wal-e.d/env
