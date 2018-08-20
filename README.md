@@ -11,8 +11,11 @@ This image backups at 9 am UTC and cleanups backups at 9:30 am UTC and retains u
 
 This image has three volumes:
 - postgis_data_volume:/var/lib/postgresql/data
-Data folder for postgresql.
+
+Data folder for postgresql. Accessable in container and host.
 - postgis_backup_volume:/lib/postgresql/backup
-Stores base backup and back up write ahead logs.
+
+Stores base backup and back up write ahead logs. Accessable in container and host.
 - postgis_env_volume:/etc/wal-e.d/env
-For storage of environment variables.
+
+For storage of environment variables. Only accessable through container.
