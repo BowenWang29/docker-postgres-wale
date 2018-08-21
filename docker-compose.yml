@@ -1,10 +1,10 @@
-version: '3'
+version: '2'
 
 services:
-database:
+  database:
     build:
       #image: mdillon/postgis:latest
-      context: ./docker-postgres-wale
+      context: ./
       dockerfile: Dockerfile
       #image: mdillon/postgis:latest
     restart: unless-stopped
@@ -21,6 +21,7 @@ database:
       - postgis_data_volume:/var/lib/postgresql/data
       - postgis_backup_volume:/lib/postgresql/backup
       - postgis_env_volume:/etc/wal-e.d/env
+
 volumes:
     postgis_data_volume:
       driver: local
